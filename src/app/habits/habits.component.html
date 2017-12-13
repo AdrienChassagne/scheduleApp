@@ -1,0 +1,43 @@
+<div class="habits">
+  <div class="habits-title">
+    <div class="row">
+      <div class="col-xs-3">
+        <h2>Habits</h2>
+      </div>
+      <navbar [types]='types' [tags]='[]' (onSelected)='onSelected($event)'>
+      </navbar>
+    </div>
+  </div>
+  <div class="habits-add">
+    <div class="habits-add-input input-group">
+      <input type="text" class="form-control " #HabitName placeholder="{{ placeholder }}" />
+      <div class="input-group-btn ">
+        <button type="button" class="btn btn-default" (click)="addItem(HabitName.value); HabitName.value=''">Add
+          </button>
+      </div>
+    </div>
+    <ul class="habits-add-list">
+      <li *ngFor="let item of items | async" class="item-d">
+        <div class="container-fluid" *ngIf="showTab(item)">
+          <div class="row">
+            <div class="col-xs-2 nb-box" [ngStyle]="setStyle(item.nbup, item.nbdown, false)">
+              <button type="button" (click)="incrNb(item)" class="item-btn" [ngStyle]="setStyle(item.nbup, item.nbdown, true)"><i class="fa fa-plus"></i></button>
+            </div>
+            <div class="col-xs-8 content-habit" (click)="setCurrentData(item); openModalWithComponent()">
+              <span>{{ item.title }}</span>
+              <div class="content-habit-updown">
+                <span>{{ item.nbup }} |</span>
+                <span> {{ item.nbdown }}</span>
+              </div>
+            </div>
+            <div class="col-xs-2 nb-box" [ngStyle]="setStyle(item.nbup, item.nbdown, false)">
+              <button type="button" class="item-btn" [ngStyle]="setStyle(item.nbup, item.nbdown, true)" (click)="decrNb(item)">
+                <i class="fa fa-minus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

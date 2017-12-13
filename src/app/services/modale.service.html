@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="modal-header" [ngStyle]="setStyle(state, false)">
+      <h2 class="col-xs-6">Edit Habit</h2>
+      <button class="pull-right cls-btn" (click)=onCancel()><i class="fa fa-times" aria-hidden="true"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-p1 col-xs-12 " [ngStyle]="setStyle(state, false)">
+        <label>title</label>
+        <input type="text" class="form-control gape" [(ngModel)]="title">
+        <label>Notes</label>
+        <textarea class="form-control gape" rows="5" type="text" [(ngModel)]="note">
+            </textarea>
+      </div>
+
+      <div *ngIf="type =='todo'">
+        <div>
+          <div class="col-xs-9 form-inline form-block">
+            <label for="datepicker">Deadline</label>
+            <input id="datepicker" type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="start" (bsValueChange)="onChange(done, soon,start)">
+          </div>
+          <div class="col-xs-3 form-inline form-block">
+            <button class="btn btn-success" (click)="dp.toggle()">Date Picker</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="type =='reminder'" class="col-xs-12">
+      <h4>Choose Tag(s) :</h4>
+      <div *ngFor="let tag of tags" class="form-check col-xs-3">
+        <div class="form-check-in">
+          <label for="tagId" class="form-check-label ">{{tag.title }} </label>
+          <input id="tagId" type="checkbox" class=" form-check-input pull-right" [(ngModel)]="tag.status">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class=" modal-footer ">
+    <button class="btn btn-primary pull-right save-btn" (click)="onConfirm() ">Save</button>
+    <button class="btn btn-primary pull-right delete-btn" (click)="onDelete() ">Delete</button>
+  </div>
+
+</div>

@@ -1,0 +1,99 @@
+@import "../../less/mixins.less";
+@import "../../less/variables.less";
+
+.habits {
+  padding: 15px;
+
+  &-title {
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  &-add {
+    background-color: #EDECEE;
+    padding: 15px;
+
+    &-input {
+      input[type=text] {
+        vertical-align: top;
+        height: 34px;
+      }
+
+      button.btn {
+        vertical-align: top;
+      }
+    }
+
+    &-list {
+      padding: 0;
+      margin-top: 15px;
+      list-style: none;
+
+      li {
+        display: block;
+        margin-bottom: 2px;
+        background-color: #fff;
+        .box-shadow(0, 1px, 10px, 0, 0, 0, 0.2);
+        .radius(5px);
+
+        .content-habit {
+          cursor: pointer;
+          min-height: 60px;
+          padding-top: 15px;
+        }
+
+        .nb-box {
+          min-height: 60px;
+          height: 100%;
+          color: #fff;
+          padding: 0;
+          position: relative;
+
+          &:first-child {
+            .radius-left(5px,5px);
+          }
+
+          &:last-child {
+            .radius-right(5px,5px);
+          }
+
+          .item-btn {
+            z-index: 10;
+            appearance: none;
+            cursor: pointer;
+            font-size: 20px;
+            border: none;
+            margin-top: 0;
+            color: #fff;
+            .radius(5px);
+            height: 30px;
+            width: 30px;
+            background-color: transparent;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+
+            &:checked {
+              &:before {
+                padding: 5px;
+                content: '\f00c';
+                display: block;
+                color: white;
+                font: @font-awesome;
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.m-header {
+  background-color: #24CC8F;
+  color: #fff;
+  padding: -15px;
+}

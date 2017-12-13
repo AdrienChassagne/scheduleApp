@@ -1,0 +1,41 @@
+<div class="habits">
+  <div class="habits-title">
+    <div class="row">
+      <div class="col-xs-3">
+        <h2>Reminders</h2>
+      </div>
+      <navbar [types]='types' [tags]='tagArr' (onSelected)='onSelected($event)'>
+      </navbar>
+    </div>
+  </div>
+  <div class="habits-add">
+    <div class="habits-add-input input-group">
+      <input type="text" class="form-control " #HabitName placeholder="{{ placeholder }}" />
+      <div class="input-group-btn ">
+        <button type="button" class="btn btn-default" (click)="addItem(HabitName.value); HabitName.value=''">Add
+          </button>
+      </div>
+    </div>
+    <ul class="habits-add-list">
+      <li *ngFor="let item of items | async ; let i = index" class="item-d">
+        <div class="container-fluid" *ngIf='showTab(item)'>
+          <div class="row">
+            <div class="col-xs-2 nb-box">
+              <button class="item-btn" (mouseenter)="showHide[i] = true" (mouseleave)='showHide[i] = false'><i class="fa fa-tags" aria-hidden="true"></i></button>
+            </div>
+
+            <div class="col-xs-10 content-habit" (click)="setCurrentData(item); openModalWithComponent()">
+              <span>{{ item.title }}</span>
+              <div [hidden]="!showHide[i]">
+                <span>Tag(s) :</span>
+                <ng-container *ngFor="let tag of item['myTags']">
+                  <span *ngIf='showTag(tag)'>{{tag.title}}</span>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

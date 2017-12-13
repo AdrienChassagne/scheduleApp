@@ -1,0 +1,49 @@
+<div class="logger">
+</div>
+<div *ngIf="auth.user | async; then authenticated else guest">
+
+</div>
+
+<ng-template #guest>
+  <h3>Hello, GUEST</h3>
+  <p>Login to get started...</p>
+
+  <button (click)="auth.googleLogin()">
+       <i class="fa fa-google"></i> Connect Google
+   </button>
+</ng-template>
+
+<ng-template #authenticated>
+  <div *ngIf="auth.user | async as user" class="logged">
+    <div class="container-fluid">
+      <div class="row bg-dark">
+        <div class="col-xs-11">
+          <h1 class="app-title">{{title}}</h1>
+        </div>
+        <button (click)="auth.signOut()" class="btn btn-xs out pull-right"><i class="fa fa-sign-out" aria-hidden="true"></i>
+        </button>
+      </div>
+      <h3>Hello, {{ user.displayName }}</h3>
+      <div class="col-xs-12">
+        <p>Manage your Habits</p>
+        <p>Manage your Todos</p>
+        <p>Manage your Reminders</p>
+      </div>
+    </div>
+  </div>
+  <mwl-demo-component></mwl-demo-component>
+  <div class="row bg">
+    <div class="col-xs-12 col-lg-4">
+      <my-habits></my-habits>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+      <my-todo></my-todo>
+    </div>
+    <div class="col-xs-12 col-lg-4">
+      <my-reminder></my-reminder>
+    </div>
+
+  </div>
+
+
+</ng-template>

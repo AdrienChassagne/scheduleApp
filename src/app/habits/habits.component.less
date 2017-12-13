@@ -1,0 +1,86 @@
+@import "../../less/mixins.less";
+
+.habits {
+  padding: 15px;
+
+  &-title {
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  &-add {
+    background-color: #EDECEE;
+    padding: 15px;
+
+    &-input {
+      input[type=text] {
+        vertical-align: top;
+        height: 34px;
+      }
+
+      button.btn {
+        vertical-align: top;
+      }
+    }
+
+    &-list {
+      padding: 0;
+      margin-top: 15px;
+      list-style: none;
+
+      li {
+        display: block;
+        margin-bottom: 2px;
+        background-color: #fff;
+        .box-shadow(0, 1px, 10px, 0, 0, 0, 0.2);
+        .radius(5px);
+
+        .content-habit {
+          cursor: pointer;
+          min-height: 60px;
+          padding-top: 15px;
+
+          &-updown {
+            color: #a5a1ac;
+            text-align: right;
+          }
+        }
+
+        .nb-box {
+          min-height: 60px;
+          height: 100%;
+          color: #fff;
+          padding: 0;
+
+          &:first-child {
+            .radius-left(5px,5px);
+          }
+
+          &:last-child {
+            .radius-right(5px,5px);
+          }
+
+          .item-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            font-size: 20px;
+            border: none;
+            border-radius: 100px;
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.m-header {
+  background-color: #24CC8F;
+  color: #fff;
+  padding: -15px;
+}

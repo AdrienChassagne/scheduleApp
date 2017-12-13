@@ -1,0 +1,35 @@
+<div class="habits">
+  <div class="habits-title">
+    <div class="row">
+      <div class="col-xs-3">
+        <h2>Todos</h2>
+      </div>
+      <navbar [types]='types' [tags]='[]' (onSelected)='onSelected($event)'>
+      </navbar>
+    </div>
+  </div>
+  <div class="habits-add">
+    <div class="habits-add-input input-group">
+      <input type="text" class="form-control " #HabitName placeholder="{{ placeholder }}" />
+      <div class="input-group-btn ">
+        <button type="button" class="btn btn-default" (click)="addItem(HabitName.value); HabitName.value=''">Add
+          </button>
+      </div>
+    </div>
+
+    <ul class="habits-add-list">
+      <li *ngFor="let item of items | async" class="item-d">
+        <div class="container-fluid" *ngIf="showTab(item)">
+          <div class="row">
+            <div class="col-xs-2 nb-box" [ngStyle]="setStyle(item.state, false)">
+              <input type="checkbox" class="item-btn" [(ngModel)]="item.done" (ngModelChange)="updateDone(item); setState(item)" [ngStyle]="setStyle(item.state, true)">
+            </div>
+            <div class="col-xs-10 content-habit" (click)="setCurrentData(item); openModalWithComponent()">
+              <span>{{ item.title }}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

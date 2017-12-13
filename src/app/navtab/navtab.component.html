@@ -1,0 +1,23 @@
+<div class="col-xs-9">
+  <ul class="nav nav-tabs navbar-right" *ngFor="let type of types">
+    <li *ngIf="tags.length === 0" class="nav-item">
+      <a class="nav-link" [ngStyle]="selectedTab(type)" (click)="setTab(type)">{{type}}</a>
+    </li>
+  </ul>
+  <div *ngIf="tags.length != 0" [ngStyle]="selectedTab(type)">
+    <div class="form-inline">
+      <div class="row no-gutters">
+        <div class="col-xs-4">
+          <label for="inlineFormCustomSelectPref">Tag</label>
+        </div>
+        <div class="col-xs-8 s">
+          <select id="inlineFormCustomSelectPref" [(ngModel)]="selectOption" (change)="changeSelectOption()">
+            <option *ngFor="let selectOption of tags ; let i = index" [value]="selectOption.title" [selected]="selectOption === 'all'">{{ selectOption.title }}</option>
+          </select>
+        </div>
+      </div>
+
+
+    </div>
+    <div>
+    </div>

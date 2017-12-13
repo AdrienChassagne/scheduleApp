@@ -1,0 +1,30 @@
+.radius (@radius) {
+  -webkit-border-radius: @radius!important;
+  -moz-border-radius: @radius!important;
+  border-radius: @radius!important;
+}
+
+.radius-left (@radius-leftt, @radius-leftb) {
+  -webkit-border-top-left-radius: @radius-leftt;
+  -webkit-border-bottom-left-radius: @radius-leftb;
+  -moz-border-radius-topleft: @radius-leftt;
+  -moz-border-radius-bottomleft: @radius-leftb;
+  border-top-left-radius: @radius-leftt;
+  border-bottom-left-radius: @radius-leftb;
+}
+
+.radius-right (@radius-rightt, @radius-rightb) {
+  -webkit-border-top-right-radius: @radius-rightt;
+  -webkit-border-bottom-right-radius: @radius-rightb;
+  -moz-border-radius-topright: @radius-rightt;
+  -moz-border-radius-bottomright: @radius-rightb;
+  border-top-right-radius: @radius-rightt;
+  border-bottom-right-radius: @radius-rightb;
+}
+
+.box-shadow(@horizontal: 0, @vertical: 2px, @blur: 3px, @r: 0, @g: 0, @b: 0, @alpha: 0.3) {
+  -moz-box-shadow: @horizontal @vertical @blur rgba(@r, @g, @b, @alpha);
+  -o-box-shadow: @horizontal @vertical @blur rgba(@r, @g, @b, @alpha);
+  -webkit-box-shadow: @horizontal @vertical @blur rgba(@r, @g, @b, @alpha);
+  box-shadow: @horizontal @vertical @blur rgba(@r, @g, @b, @alpha);
+}
