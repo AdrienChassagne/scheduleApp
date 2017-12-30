@@ -5,12 +5,17 @@
 </div>
 
 <ng-template #guest>
-  <h3>Hello, GUEST</h3>
-  <p>Login to get started...</p>
-
-  <button (click)="auth.googleLogin()">
-       <i class="fa fa-google"></i> Connect Google
-   </button>
+  <div class="container">
+    <div class="log">
+      <div class="col-xs-12 col-lg-3 col-lg-push-4 col-md-3 col-md-push-4">
+        <h3>Hello, Guest</h3>
+        <p>Login to get started your weekly schedule</p>
+        <button (click)="auth.googleLogin()" class="btn">
+             <i class="fa fa-google"></i> Connect Google
+         </button>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
 <ng-template #authenticated>
